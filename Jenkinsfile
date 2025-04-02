@@ -9,5 +9,11 @@ pipeline{
                 sh 'ls-l'
             }
         }
+        stage ('upload artifacrs to jfrog'){
+            steps{
+                sh 'curl -uadmin:APBcq71UnokyUif1o4U46B5LuEZ -T ansible-${BUILD_ID}.zip \
+                 "http://54.156.126.227:8081/artifactory/ansible/ansible-${BUILD_ID}.zip"'
+            }
+        }
     }
 }
